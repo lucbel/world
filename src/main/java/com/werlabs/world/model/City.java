@@ -1,27 +1,29 @@
 package com.werlabs.world.model;
 
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by rodrigo on 18/11/17.
  */
+@Entity
 @Table(name = "city")
 public class City {
 
-    private int id;
+
+    private Long id;
+
     private String name;
+
     private String countryCode;
+
     private String district;
-    private String population;
 
-    public int getId() {
-        return id;
-    }
+    private Long population;
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
+
+
+    @Column(name = "Name",length = 35)
     public String getName() {
         return name;
     }
@@ -29,7 +31,7 @@ public class City {
     public void setName(String name) {
         this.name = name;
     }
-
+    @Column(name = "CountryCode",length = 3)
     public String getCountryCode() {
         return countryCode;
     }
@@ -38,6 +40,7 @@ public class City {
         this.countryCode = countryCode;
     }
 
+    @Column(name = "District",length = 20)
     public String getDistrict() {
         return district;
     }
@@ -46,11 +49,23 @@ public class City {
         this.district = district;
     }
 
-    public String getPopulation() {
+    @Column(name = "Population",length = 11)
+    public Long getPopulation() {
         return population;
     }
 
-    public void setPopulation(String population) {
+    public void setPopulation(Long population) {
         this.population = population;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
