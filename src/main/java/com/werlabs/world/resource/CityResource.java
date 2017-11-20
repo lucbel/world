@@ -1,6 +1,7 @@
 package com.werlabs.world.resource;
 
-import com.werlabs.world.CityRepository;
+import com.werlabs.world.repository.CityRepository;
+import com.werlabs.world.ElementNotFoundException;
 import com.werlabs.world.model.City;
 import jersey.repackaged.com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,12 @@ public class CityResource {
     @Produces("application/json")
     @Path("/{id}")
     public City retrieve(@PathParam("id") Long id) {
-        return cityRepository.findOne(id);
+
+        City city = cityRepository.findOne(id);
+        if(city == null) {
+            throw new ElementNotFoundException(id, "city");
+        }
+        return city;
     }
 
     @PUT

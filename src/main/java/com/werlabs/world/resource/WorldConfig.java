@@ -1,5 +1,6 @@
 package com.werlabs.world.resource;
 
+import com.werlabs.world.NotFoundExceptionHandler;
 import com.werlabs.world.resource.CityResource;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
@@ -12,5 +13,7 @@ public class WorldConfig extends ResourceConfig {
     public WorldConfig() {
         System.out.println("registering resources");
         register(CityResource.class);
+        register(CountryResource.class);
+        register(NotFoundExceptionHandler.class);
     }
 }

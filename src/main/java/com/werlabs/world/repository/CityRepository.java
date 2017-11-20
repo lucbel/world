@@ -1,4 +1,4 @@
-package com.werlabs.world;
+package com.werlabs.world.repository;
 
 import com.werlabs.world.model.City;
 import org.springframework.data.repository.CrudRepository;
