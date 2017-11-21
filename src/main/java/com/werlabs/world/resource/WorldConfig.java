@@ -14,6 +14,7 @@ public class WorldConfig extends ResourceConfig {
         System.out.println("registering resources");
         register(CityResource.class);
         register(CountryResource.class);
+        register(CountryLanguageResource.class);
         register(NotFoundExceptionHandler.class);
     }
 }
