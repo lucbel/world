@@ -27,16 +27,15 @@ public class CountryResource {
     @GET
     @Produces("application/json")
     public Collection<Country> getAll() {
-        System.out.println("calling Country getAll");
         return Lists.newArrayList(countryRepository.findAll());
     }
 
     @POST
     @Produces("application/json")
     @Consumes("application/json")
-    public Response create(Country Country) {
-        countryRepository.save(Country);
-        return Response.created(URI.create("/" + Country.getCode())).build();
+    public Response create(Country country) {
+        countryRepository.save(country);
+        return Response.created(URI.create("/" + country.getCode())).build();
     }
 
     @GET
@@ -61,7 +60,7 @@ public class CountryResource {
             storedCountry.setCapital(country.getCapital());
             storedCountry.setName(country.getName());
             storedCountry.setPopulation(country.getPopulation());
-  //          storedCountry.setContinent(country.getContinent());
+            storedCountry.setContinent(country.getContinent());
             storedCountry.setGnp(country.getGnp());
             storedCountry.setGnpOld(country.getGnpOld());
             storedCountry.setGovernmentForm(country.getGovernmentForm());

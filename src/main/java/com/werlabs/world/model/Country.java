@@ -1,6 +1,9 @@
 package com.werlabs.world.model;
 
+import org.eclipse.persistence.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.Convert;
 
 /**
  * Created by rodrigo on 20/11/17.
@@ -37,11 +40,11 @@ public class Country {
         return name;
     }
 
-//    @Column(name = "Continent")
-//    @Enumerated(EnumType.STRING)
-//        public Continent getContinent() {
-//        return continent;
-//    }
+    @Column(name = "Continent")
+    @Convert(converter = ContinentConverter.class)
+        public Continent getContinent() {
+        return continent;
+    }
 
     @Column(name = "Region",length = 26)
     public String getRegion() {
@@ -164,26 +167,4 @@ public class Country {
     }
 
 }
-
- enum Continent {
-     ASIA("Asia"),
-     EUROPE("Europe"),
-     NORTH_AMERICA("North America"),
-     AFRICA("Africa"),
-     OCEANIA("Oceania"),
-     ANTARCTICA("Antarctica"),
-     SOUTH_AMERICA("South America");
-
-     private final String description;
-
-
-     Continent(String description) {
-         this.description = description;
-     }
-
-
-
-
-
- }
 
